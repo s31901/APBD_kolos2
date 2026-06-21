@@ -1,0 +1,24 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace APBD_kolos2.Entities;
+
+[Table("Client")]
+public class Client
+{
+    [Key]
+    public int ClientId { get; set; }
+    
+    [Required]
+    [MaxLength(100)]
+    public string FirstName { get; set; } = string.Empty;
+    
+    [Required]
+    [MaxLength(100)]
+    public string LastName { get; set; } = string.Empty;
+    
+    [Column(TypeName = "datetime")]
+    public DateTime DateOfBirth { get; set; }
+    
+    public ICollection<Visit> Visits { get; set; } = [];
+}
